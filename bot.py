@@ -11,7 +11,7 @@ def run():
   token = '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'
   
   # Nombre de usuario y nombre del repositorio
-  usuario = 'Oxitocinaa'
+  usuario = 'oxitocinaa'
   repositorio = 'upload_passwd'
   
   # Ruta local del archivo que deseas subir
