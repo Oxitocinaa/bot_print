@@ -8,7 +8,7 @@ def run():
   import os
   
   # Tu token de acceso personal
-  token = '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'
+  token = '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'
   
   # Nombre de usuario y nombre del repositorio
   usuario = 'oxitocinaa'
