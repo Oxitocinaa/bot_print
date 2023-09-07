@@ -1,6 +1,4 @@
 def run():
-  sudo pip install PyGithub
-  print("PyGithub instalado")
   
   from github import Github
   import os
