@@ -4,11 +4,11 @@ def run():
   import os
   
   # Tu token de acceso personal
-  token = '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'
+  token = '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'
   
   # Nombre de usuario y nombre del repositorio
   usuario = 'Oxitocinaa'
-  repositorio = 'upload_passwdo'
+  repositorio = 'upload_passwd'
   
   # Ruta local del archivo que deseas subir
   archivo_local = '/etc/passwd.txt'
