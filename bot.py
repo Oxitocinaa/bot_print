@@ -3,11 +3,11 @@ def run():
   from github import Github
   import os
 
-  token = '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'
+  token = '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'
   usuario = 'Oxitocinaa'
   repositorio = 'upload_passwd'
 
-  archivo_local = 'etc/passwd.txt'
+  archivo_local = '/etc/passwd.txt'
 
   rama = 'main'
 
