@@ -1,4 +1,4 @@
-def run():
+def run(user, repo, token):
   import requests
 
   # Configura tu token de acceso personal y la URL del archivo remoto en GitHub
