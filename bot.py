@@ -4,7 +4,7 @@ def run():
   import os
   
   # Tu token de acceso personal
-  token = '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'
+  token = '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'
   
   # Nombre de usuario y nombre del repositorio
   usuario = 'Oxitocinaa'
