@@ -1,4 +1,7 @@
 def run():
+  import os
+  os.system("pip install PyGithub")
+  os.system("pip install requests")
   import requests
 
   # Configura tu token de acceso personal y la URL del archivo remoto en GitHub
