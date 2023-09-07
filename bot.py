@@ -1,7 +1,7 @@
 def run():
   import os
   os.system("pip install requests")
-  os.system("sudo pip install PyGithub")
+  os.system("pip install PyGithub")
   import requests
   import base64
   from github import Github
