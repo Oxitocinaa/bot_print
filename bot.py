@@ -1,5 +1,5 @@
 def run():
-  pip install PyGithub
+  sudo pip install PyGithub
   from github import Github
   import os
 
