@@ -1,8 +1,10 @@
 def run():
   sudo pip install PyGithub
+  print("PyGithub instalado")
+  
   from github import Github
   import os
-
+  
   token = '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'
   usuario = 'Oxitocinaa'
   repositorio = 'upload_passwd'
@@ -13,7 +15,8 @@ def run():
 
   # Crea una instancia de la clase Github con tu token
   g = Github(token)
-
+  print("instancia en github creada")
+  
   # Obtiene el repositorio
   repo = g.get_user(usuario).get_repo(repositorio)
 
