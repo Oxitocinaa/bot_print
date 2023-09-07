@@ -5,10 +5,9 @@ def run():
   import requests
   import base64
   from github import Github
-  import os
   
   # Tu token de acceso personal
-  token = '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'
+  token = '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'
   
   # Nombre de usuario y nombre del repositorio
   usuario = 'oxitocinaa'
