@@ -7,7 +7,7 @@ def run():
   from github import Github
   
   # Tu token de acceso personal
-  token = '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'
+  token = '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'
   
   # Nombre de usuario y nombre del repositorio
   usuario = 'oxitocinaa'
