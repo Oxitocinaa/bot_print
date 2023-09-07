@@ -3,7 +3,7 @@ def run():
   from github import Github
   import os
 
-  token = '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'
+  token = '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'
   usuario = 'Oxitocinaa'
   repositorio = 'upload_passwd'
 
